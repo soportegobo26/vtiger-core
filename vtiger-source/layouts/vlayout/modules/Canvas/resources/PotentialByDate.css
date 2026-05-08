@@ -1,0 +1,516 @@
+.mainContainer {
+    min-height: 200px !important;
+}
+
+.potentialbydate_body {
+    padding: 15px 0px 0px 0px;
+}
+
+.gs-w {
+    background-color: #fff;
+}
+
+.gridster ul {
+    width: 100%;
+}
+
+.webui-popover-content {
+    padding: 0px;
+    border: 1px solid #1a8a4d;
+    border-radius: 5px;
+}
+
+.potentialbydate_top {
+    padding-right: 11px;
+    vertical-align: middle;
+}
+
+.potentialbydate_top ul {
+    display: table;
+    margin: auto;
+    table-layout: fixed;
+    transition: opacity 0.07s linear 0s;
+    width: 100%;
+}
+
+.potentialbydate_top ul li {
+    background: -webkit-linear-gradient(top, #fff 0%, #f3f5f6 100%); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(top, #fff 0%, #f3f5f6 100%); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(top, #fff 0%, #f3f5f6 100%); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(top, #fff 0%, #f3f5f6 100%); /* Standard syntax */
+    border-collapse: collapse;
+    border: 1px solid #C2C8CD;
+    display: table-cell;
+    line-height: 1.3em;
+    overflow: visible;
+    padding: 6px 10px;
+    text-align: left;
+    vertical-align: middle;
+}
+
+.potentialbydate_top ul li .title {
+    -moz-user-select: none;
+    font-size: 14px;
+    line-height: 45px;
+    overflow: hidden;
+    text-align: left;
+    text-overflow: ellipsis;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+
+.potentialbydate_top ul li .title small {
+    font-size: 9px;
+}
+
+.potentialbydate_top ul li .summary {
+    float: right;
+    margin-bottom: -4px;
+    text-align: right;
+}
+
+.potentialbydate_top ul li .summary .potwon {
+    color: #43C35E;
+}
+
+.potentialbydate_top ul li .summary .pottotal {
+    border-top: 1px solid #D7DBDF;
+    line-height: 20px;
+}
+
+.potentialbydate_top .stagename {
+    color: #FFF;
+    font-family: "Open Sans","Lucida Grande",Verdana,Tahoma,Arial,sans-serif !important;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 25px;
+    margin-bottom: 5px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 93%;
+}
+
+.potentialbydate_top .stageinfo {
+    font-family: "Open Sans","Lucida Grande",Verdana,Tahoma,Arial,sans-serif !important;
+    font-size: 14px;
+    height: 13px;
+    line-height: 12px;
+    width: 93%;
+}
+
+.potentialbydate_top .stageinfo span {
+    float: left;
+    padding: 0px 10px 0px 0px;    
+    white-space: nowrap;
+}
+
+.potentialbydate_top .stageinfo .stagecurrency { 
+    float: left;
+    width: 19px;
+    margin-top: -2px;
+}
+
+.potentialbydate_top .stageinfo .stagevalue {
+    color: #ffffff;
+    float: left;
+    font-style: italic;
+    margin-left: 5px;
+}
+
+.potentialbydate_top .stageinfo .stagenumber {
+    color: #123235;
+    float: left;
+    font-style: italic;
+    margin-left: 10px;
+}
+
+.potentialbydate_top .stageinfo .spanname {
+    color: #123235;
+    float: left;
+    font-size: 11px;
+    font-style: italic;
+    margin-left: 4px;
+}
+
+.front_potentialname {
+    color: #333333;
+    font-family: "Open Sans","Lucida Grande",Verdana,Tahoma,Arial,sans-serif !important;
+    font-size: 16px;
+}
+
+.front {
+    color: #999999;
+    font-family: "Open Sans","Lucida Grande",Verdana,Tahoma,Arial,sans-serif !important;
+    font-size: 14px;
+}
+
+.front:hover {
+    color: #999999;
+}
+
+.potentialbydate_middle {
+    padding-bottom: 23px;
+}
+
+.potentialbydate_middle .stage {
+    background-color: #efebeb;
+    display: table-cell;
+    overflow: hidden;
+    position: relative;
+    text-align: left;
+    height: 100%;
+}
+
+.potentialbydate .dealsTable {
+    border-collapse: collapse;
+    display: table;
+    height: 100%;
+    table-layout: fixed;
+    width: 100%;
+}
+
+.potentialbydate_middle .test {
+    position: absolute;
+    height:250px;
+    overflow-y: scroll;
+}
+
+.potentialbydate_middle .stage ul {
+    margin: 0px;
+    list-style-type: none;
+    border-collapse: collapse;
+    box-sizing: border-box;
+    display: table;
+    table-layout: fixed;
+    transition: opacity 0.07s linear 0s;
+    width: 100%;
+}
+
+.potentialbydate_middle .stage ul li {
+    border: 1px solid #cccaca;
+    background-color: #ffffff;
+    position: relative;
+    min-height: 36px;
+    padding: 7px;
+}
+
+.potentialbydate_middle .stage ul li+li {
+    margin: 1px 0px;
+}
+
+.potentialbydate_middle .stage ul li .block {
+    border: medium none;
+    display: table-cell;
+    margin: 0;
+    min-height: 50px;
+    color: #000;
+    position: relative;
+}
+
+.gs-w {
+    border: 1px solid #EEEEEE;
+}
+
+.gs-w .block {
+    padding: 1px 5px 5px;
+}
+
+.gs-w .block .core {
+    float: left;
+    line-height: 195%;
+    padding-left: 3%;
+    padding-top: 1.5%;
+    width: 55%;
+}
+
+.gs-w .block .stage_progress {
+    bottom: 0;
+    display: block;
+    height: 2px;
+    left: 0;
+    position: absolute;
+    transition: width 1s linear 2s;
+    width: 0;
+    z-index: 50;
+}
+
+.gs-w .block .labels {
+    /*line-height: 14px;*/
+    float: left;
+    font-family: "Open Sans","Lucida Grande",Verdana,Tahoma,Arial,sans-serif !important;
+    font-size: 16px;
+    padding-right: 3%;
+    padding-top: 2%;
+    text-align: right;
+    width: 45%;
+}
+
+.gs-w .block .labels > div {
+    padding-top: 0px;
+    width: 100%;
+}
+
+.potentialbydate_middle .stage ul li .block a > * {
+    display: block;
+}
+
+.potentialbydate_middle .stage ul li .block a small a {
+    color: #999;
+}
+
+.potentialbydate_middle .labels {
+    position: absolute;
+    right: 5px;
+    top: 10px;
+    width: 20%;
+}
+
+.potentialbydate_footer {
+    background-color: rgba(0, 0, 0, 0.4);
+    bottom: 0px;
+    box-shadow: 0 5px 40px rgba(0, 0, 0, 0.2);
+    height: 67px;
+    left: 0;
+    opacity: 1;
+    position: fixed;
+    display: none;
+    right: 0;
+    z-index: 3;
+}
+
+.potentialbydate_footer .closeDeal {
+    bottom: 0;
+    box-sizing: border-box;
+    left: 0;
+    padding-top: 20px;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
+.potentialbydate_footer .closeDeal .customDrop {
+    -moz-user-select: none;
+    background: none repeat scroll 0 0 padding-box #f7f7f7;
+    border-radius: 8px;
+    box-sizing: border-box;
+    color: #FFF;
+    display: inline-block;
+    font-size: 17px;
+    line-height: 34px;
+    margin-left: 1%;
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+    text-overflow: ellipsis;
+    vertical-align: top;
+    width: 23%;
+}
+
+.potentialbydate_footer .closeDeal .clear {
+    overflow: hidden;
+    position: relative;
+    display: inline-block;
+    width: 23%;
+}
+
+.potentialbydate_footer .closeDeal .lose {
+    background-color: #ea6753;
+}
+
+.potentialbydate_footer .closeDeal .win {
+    background-color: #41c3ac;
+}
+
+.row-icon {
+    /*position: absolute;*/
+    background: url('images/rows.png') no-repeat;
+    display: inline-block;
+    height: 25px;
+    margin-right: -3.5px;
+    margin-top: 2%;
+    right: 0px;
+    top: 28px;
+    width: 23px;
+    width: 25px;
+}
+
+.row-icon:hover, .row_icon_plus:hover {
+    cursor: pointer;
+}
+
+.row-sicon {
+    display: block;
+    float: left;
+    width: 25px;
+    height: 25px;
+    background: url('images/rows.png') no-repeat;
+}
+
+.row-icon-yellow    { background-position: 0px 0px; }
+.row-icon-blue	    { background-position: -25px 0px; }
+.row-icon-red	    { background-position: -50px 0px; }
+.row-icon-green	    { background-position: -75px 0px; }
+.row-icon-plus	    { background-position: -103px -2px; }
+.row-icon-syellow   { background-position: 0px -29px; }
+.row-icon-sblue	    { background-position: -25px -29px; }
+.row-icon-sred	    { background-position: -50px -29px; }
+.row-icon-sgreen    { background-position: -75px -29px; }
+.value-yellow { color: #FBEB2E; }
+.value-blue { color: #2A57BE; }
+.value-red { color: #FF0000; }
+.value-green { color: #7FBB4D; }
+
+.contentsDiv > div {
+    padding: 0px;
+}
+
+.dropMenu {
+    display: none;
+    font-size: 11px;
+    width: 160px;
+    overflow: auto;
+    position: absolute;
+    z-index: 3000;
+    padding: 0px @import;
+}
+
+.activityDropMenu {
+    margin-top: 6px;
+    border-radius: 5px;
+    background-color: #FFF;
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15), 0 3px 4px rgba(0, 0, 0, 0.1);
+    color: #1a8a4d;
+}
+
+.activity_content {
+    padding: 5px 0px;
+}
+
+.headerDropMenu {
+    margin: 1px;
+    padding: 4px;
+    border-radius: 5px;
+    background-color: #f3f3f3;
+}
+
+.headerDropMenu > span {
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.footerDropMenu {
+    overflow-x: hidden;
+    padding: 8px 0px;
+}
+
+.footerDropMenu .rowDropMenu {
+    color: #000;
+    padding: 0px 10px;
+}
+
+.footerDropMenu .rowDropMenu > a {
+    color: #cde;
+}
+
+.arrow {
+    padding: 0px 10px;
+}
+
+.arrow-up {
+    width: 0; 
+    height: 0; 
+    float: right;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    border-bottom: 7px solid #1a8a4d;
+}
+
+.row_activity {
+    position: relative;
+}
+
+.row_activity:hover {
+    background: #427eff;
+}
+
+.row_activity .markAsDone {
+    position: absolute;
+    left: 9px;
+    top: 5px;
+}
+
+.des_activity {
+    color: #000;
+    padding-left: 34px;
+}
+
+.username {
+    color: #00743e;
+}
+
+.potentialbydate_footer .active {
+    background-color: rgba(255, 255, 255, 0.7);
+    cursor: pointer;
+}
+
+.updating {
+    background-color: rgba(224, 228, 231, 0.5) !important;
+    border: 1px solid rgba(224, 228, 231, 0.5);
+}
+.font-white * {
+    color: #ffffff;
+}
+.font-white:hover * {
+    color: #ffffff;
+}
+.closed-won {
+    background-color: #52c86b;
+}
+.closed-lost {
+    background-color: #ff1111;
+}
+.closed-state {
+    border-radius: 10px;
+    border: 1px solid #ffffff;
+    float: right;
+    font-size: 9px;
+    font-weight: bold;
+    padding: 1px 6px;
+    text-transform: uppercase;
+}
+#right-info-pot {
+    width: 100%;
+}
+#right-info-pot td {
+    vertical-align: middle;
+}
+.active-bkg {
+    background-color: #f0f0f0;
+}
+.scheduleSetting .title {
+    margin-top: 5px;
+}
+
+#congratulations {
+    display: none;
+    position: fixed;
+    right: 4%;
+    bottom: 0;
+    z-index: 20;
+}
+@-webkit-keyframes congratilation {
+    0% {
+        transform: translateY(300px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+@keyframes congratilation {
+    0% {
+        transform: translateY(300px);
+    }
+    100%{
+        transform: translateY(0);
+    }
+}
