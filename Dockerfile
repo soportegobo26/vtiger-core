@@ -9,8 +9,7 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 # 2. Configuración e instalación de extensiones para vtiger
-RUN docker-php-ext-configure imap --with-imap-ssl \
-    && docker-php-ext-install mysqli gd imap zip
+RUN docker-php-ext-install mysqli gd zip
 
 # 3. Aplicar configuración de PHP optimizada 
 COPY ./config/php.ini /usr/local/etc/php/conf.d/vtiger-config.ini
