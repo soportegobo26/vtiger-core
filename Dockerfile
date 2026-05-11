@@ -3,10 +3,9 @@ FROM php:8.1-apache
 
 # 1. Instalación de dependencias del sistema y extensiones PHP críticas
 RUN apt-get update && apt-get install -y \
-    libmysqli-dev \
     libgd-dev \
     libzip-dev \
-    libc-client-dev \
+    libc-client2007e-dev \
     libkrb5-dev \
     unzip \
     && rm -rf /var/lib/apt/lists/*
