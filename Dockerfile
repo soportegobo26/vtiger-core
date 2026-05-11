@@ -8,7 +8,7 @@ RUN apt-get update && apt-get install -y \
     unzip \
     git \
     curl \
-    libc-client2007e-dev \
+    libc-client-dev \
     libkrb5-dev \
     && rm -rf /var/lib/apt/lists/*
 
