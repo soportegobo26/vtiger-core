@@ -249,6 +249,6 @@ class Install_Index_view extends Vtiger_View_Controller {
 	}
 
 	public function validateRequest(Vtiger_Request $request) { 
-		return $request->validateWriteAccess(true); 
+		return true; 
 	}
 }
