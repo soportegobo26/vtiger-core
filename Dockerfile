@@ -5,13 +5,11 @@ FROM php:8.1-apache
 RUN apt-get update && apt-get install -y \
     libgd-dev \
     libzip-dev \
-    libc-client2007e-dev \
-    libkrb5-dev \
     unzip \
     && rm -rf /var/lib/apt/lists/*
 
 # 2. Configuración e instalación de extensiones para vtiger
-RUN docker-php-ext-configure imap --with-kerberos --with-imap-ssl \
+RUN docker-php-ext-configure imap --with-imap-ssl \
     && docker-php-ext-install mysqli gd imap zip
 
 # 3. Aplicar configuración de PHP optimizada 
