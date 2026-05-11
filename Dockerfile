@@ -8,13 +8,12 @@ RUN apt-get update && apt-get install -y \
     unzip \
     git \
     curl \
-    libc-client-dev \
+    libc-client2007e-dev \
     libkrb5-dev \
     && rm -rf /var/lib/apt/lists/*
 
 # 2. Configuración e instalación de extensiones para vtiger
-RUN docker-php-ext-configure imap --with-kerberos --with-imap-ssl \
-    && docker-php-ext-install mysqli gd zip imap curl
+RUN docker-php-ext-install mysqli gd zip imap curl
 
 # 3. Instalar Composer
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
