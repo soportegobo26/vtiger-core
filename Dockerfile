@@ -10,6 +10,7 @@ RUN apt-get update && apt-get install -y \
     curl \
     libc-client2007e-dev \
     libkrb5-dev \
+    libcurl4-openssl-dev \
     && rm -rf /var/lib/apt/lists/*
 
 # 2. Configuración e instalación de extensiones para vtiger
