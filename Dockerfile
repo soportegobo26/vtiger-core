@@ -1,3 +1,4 @@
+# vtiger-core base image
 FROM php:8.1-apache
 
 # 1. Instalación de dependencias del sistema y extensiones PHP críticas
