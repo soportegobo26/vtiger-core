@@ -1,16 +1,30 @@
+# Credenciales y entorno
+.env
+.env.*
+*.env
+secrets/
+
+# Caché y temporales de vtiger
+vtiger-source/cache/session/*
+vtiger-source/cache/templates_c/*
+vtiger-source/cache/modules/*
+vtiger-source/cache/tabdata.php
+vtiger-source/logs/*.log
+vtiger-source/storage/
+
+# Dependencias (se instalan en el build)
+vtiger-source/vendor/
+!vtiger-source/vendor/.gitkeep
+
 # OS
-Thumbs.db
 .DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
 *.swp
 *.swo
 
-# IDE
-.idea/
-.vscode/
-*.sublime-*
-
-# Logs
-*.log
-
 # Docker
-.env
+*.log
