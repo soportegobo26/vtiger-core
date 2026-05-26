@@ -41,7 +41,11 @@ RUN docker-php-ext-configure gd --with-freetype --with-jpeg \
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
 # 4. Habilitar módulos Apache requeridos
-RUN a2enmod rewrite headers expires deflate php
+# 4. Habilitar módulos Apache requeridos
+RUN a2enmod rewrite headers expires deflate \
+    && echo '<FilesMatch ".+\.ph(ar|p|tml)$">\n    SetHandler application/x-httpd-php\n</FilesMatch>\n<FilesMatch "^\.ph(ar|p|tml)$">\n    Require all denied\n</FilesMatch>' \
+       > /etc/apache2/mods-available/php.conf \
+    && a2enmod php
 
 # 5. Configuración Apache: AllowOverride All (necesario para .htaccess de vtiger)
 COPY ./apache/vtiger.conf /etc/apache2/sites-available/000-default.conf
