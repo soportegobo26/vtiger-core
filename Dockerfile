@@ -41,7 +41,7 @@ RUN docker-php-ext-configure gd --with-freetype --with-jpeg \
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
 # 4. Habilitar módulos Apache requeridos
-RUN a2enmod rewrite headers expires deflate
+RUN a2enmod rewrite headers expires deflate php
 
 # 5. Configuración Apache: AllowOverride All (necesario para .htaccess de vtiger)
 COPY ./apache/vtiger.conf /etc/apache2/sites-available/000-default.conf
