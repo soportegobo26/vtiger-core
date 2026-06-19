@@ -1,0 +1,30 @@
+# =============================================================================
+# vtiger-source/.htaccess
+# CRÍTICO: debe existir en /var/www/html/ para que vtiger rutee correctamente
+# =============================================================================
+
+AddDefaultCharset UTF-8
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+
+    # No reescribir archivos o directorios existentes
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+
+    # Todo lo demás va a index.php
+    RewriteRule ^(.*)$ index.php [QSA,L]
+</IfModule>
+
+# Bloquear acceso a archivos sensibles
+<FilesMatch "\.(log|sql|sh|rar|zip|gz|bak|env)$">
+    Require all denied
+</FilesMatch>
+
+# Bloquear carpetas internas
+RedirectMatch 403 ^/cache/
+RedirectMatch 403 ^/logs/
+RedirectMatch 403 ^/migrations/
+
+Options -Indexes
