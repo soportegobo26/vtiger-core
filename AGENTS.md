@@ -2,12 +2,12 @@
 
 ## Repo purpose
 
-Base Docker image for vtiger CRM 8.3.0 (PHP 8.1+ / Apache). Part of a two-repo system: this repo is the **immutable core**; client repos (e.g. `crm-racksandbags`) extend it via `ONBUILD`.
+Base Docker image for vtiger CRM 8.4.0 (PHP 8.1+ / Apache). Part of a two-repo system: this repo is the **immutable core**; client repos (e.g. `crm-racksandbags`) extend it via `ONBUILD`.
 
 ## Directories
 
-- `vtiger-source/` — Official vtiger CRM code (unmodified, 56 entries)
-- `config/php.ini` — Optimized PHP config (512M memory, 600s timeout, America/Bogota TZ)
+- `vtiger-source/` — Official vtiger CRM code (unmodified)
+- `config/php.ini` — Optimized PHP config (512M memory, 120s timeout, America/Bogota TZ)
 - `.github/workflows/build-core.yml` — CI/CD: build & push Docker image to GHCR
 
 ## Key facts
@@ -17,7 +17,7 @@ Base Docker image for vtiger CRM 8.3.0 (PHP 8.1+ / Apache). Part of a two-repo s
 - **CI/CD** triggers on pushes to `main`/`master` touching `Dockerfile`, `config/*`, or `vtiger-source/*`. Pushes to `ghcr.io/soportegobo26/vtiger-core:latest`.
 - **PHP entrypoint**: `vtiger-source/index.php` (vtiger CRM application)
 - **Composer**: `vtiger-source/composer.json` requires PHP >=8.1, ext-mysqli, ext-imap, ext-curl, plus smarty, monolog, phpmailer, tcpdf, etc. Run `composer update` if modifying `composer.json`.
-- **Config template**: `vtiger-source/config.template.php` — actual `config.inc.php` and `config.db.php` are blank/empty; database config is injected at deployment via environment or client repo.
+- **Config template**: `vtiger-source/config.template.php` — actual `config.inc.php` is empty (0 bytes); database config is injected at deployment time by the client repo's `docker-entrypoint.sh` from environment variables.
 
 ## Workflows
 

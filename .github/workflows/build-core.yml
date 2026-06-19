@@ -63,14 +63,14 @@ jobs:
       - name: Notify build success
         if: success()
         run: |
-          echo "✅ Core image publicada exitosamente"
+          echo "Core image publicada exitosamente"
           echo "Tags: ${{ steps.meta.outputs.tags }}"
           echo ""
-          echo "Los repos cliente deben actualizar su FROM para usar la nueva versión:"
+          echo "Los repos cliente deben actualizar su FROM para usar la nueva version:"
           echo "  FROM ghcr.io/soportegobo26/vtiger-core:latest"
 
       - name: Notify build failure
         if: failure()
         run: |
-          echo "❌ Error en el build del core"
+          echo "ERROR en el build del core"
           echo "Revisar los logs del step anterior"

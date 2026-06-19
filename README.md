@@ -1,6 +1,6 @@
 # vtiger-core
 
-Imagen base Docker para vtiger CRM 8.3.0.
+Imagen base Docker para vtiger CRM 8.4.0.
 
 ## Estructura
 
@@ -12,7 +12,7 @@ vtiger-core/
 │   └── vtiger.conf           # VirtualHost con AllowOverride All
 ├── config/
 │   └── php.ini               # PHP optimizado para vtiger
-├── vtiger-source/            # Código fuente oficial vtiger 8.3.0
+├── vtiger-source/            # Codigo fuente oficial vtiger 8.4.0 (SIN MODIFICAR)
 │   └── .htaccess             # Rewrite rules
 └── Dockerfile                # Imagen base con ONBUILD
 ```
@@ -25,10 +25,10 @@ Cada repo cliente hace:
 
 ```dockerfile
 FROM ghcr.io/soportegobo26/vtiger-core:latest
-# El ONBUILD del core inyecta automáticamente:
-# - custom-code/ → /var/www/html/
-# - migrations/  → /var/www/html/migrations/
-# - docker-entrypoint.sh
+# El ONBUILD del core inyecta automaticamente:
+# - custom-code/ -> /var/www/html/
+# - migrations/  -> /var/www/html/migrations/
+# - docker-entrypoint.sh (opcional)
 ```
 
 ## Actualizar el core
@@ -36,8 +36,8 @@ FROM ghcr.io/soportegobo26/vtiger-core:latest
 Solo hacer push a `main`. El workflow build-core.yml publica la nueva imagen.
 Los repos cliente deben hacer rebuild para heredar los cambios.
 
-## Política
+## Politica
 
 - NO modificar `vtiger-source/` sin proceso de release aprobado
 - NO agregar credenciales o `.env` al repo
-- Toda personalización por cliente va en su propio repo `crm-cliente-ID`
+- Toda personalizacion por cliente va en su propio repo `crm-cliente-ID`

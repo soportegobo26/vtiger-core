@@ -1,6 +1,6 @@
 # =============================================================================
 # vtiger-core/Dockerfile
-# Imagen base para todos los clientes vtiger CRM 8.3.0
+# Imagen base para todos los clientes vtiger CRM 8.4.0
 # NO modificar este archivo sin pasar por el proceso de release del core.
 # =============================================================================
 
@@ -53,7 +53,7 @@ COPY ./config/php.ini /usr/local/etc/php/conf.d/vtiger-config.ini
 # 7. Directorio de trabajo
 WORKDIR /var/www/html
 
-# 8. Código fuente CORE de vtiger
+# 8. Código fuente CORE de vtiger (SIN MODIFICACIONES)
 COPY ./vtiger-source /var/www/html/
 
 # 9. Instalar dependencias Composer del core
@@ -70,16 +70,25 @@ RUN chown -R www-data:www-data /var/www/html \
                     /var/www/html/logs 2>/dev/null || true
 
 # =============================================================================
-# ONBUILD: se ejecuta automáticamente cuando crm-cliente hace FROM de esta imagen
+# ONBUILD: se ejecuta automáticamente cuando un repositorio cliente
+# hace FROM ghcr.io/soportegobo26/vtiger-core:latest
 # =============================================================================
+# Copia el código personalizado del cliente (módulos, layouts, etc.)
 ONBUILD COPY ./custom-code /var/www/html/
+
+# Copia las migraciones SQL del cliente
 ONBUILD COPY ./migrations  /var/www/html/migrations/
+
+# CORREGIDO: El entrypoint es OPCIONAL — usa || true para que no falle
+# si el cliente no incluye docker-entrypoint.sh
 ONBUILD COPY ./docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
-ONBUILD RUN  chmod +x /usr/local/bin/docker-entrypoint.sh \
+ONBUILD RUN  chmod +x /usr/local/bin/docker-entrypoint.sh 2>/dev/null || true \
           && chown -R www-data:www-data /var/www/html \
           && chmod +x /var/www/html/migrations/run-migrations.sh 2>/dev/null || true
 
 EXPOSE 80
 
+# El repositorio cliente DEBE sobreescribir este ENTRYPOINT con su propio
+# docker-entrypoint.sh que genera config.inc.php dinámicamente.
 ENTRYPOINT ["docker-php-entrypoint"]
 CMD ["apache2-foreground"]
