@@ -1,0 +1,27 @@
+#rightPanel {
+    background-color: #EEEEEE;
+}
+
+.canvas {
+	height: 100%;
+    margin: 0px 18px;
+}
+
+.scheduleViewActions {
+	margin: 0px 21px;
+}
+
+.scheduleSetting {
+	text-align: center;
+	left: -117px;
+}
+
+.scheduleSetting li {
+	font-size: 11px;
+}
+
+.title {
+	font-size: 13px;
+	font-weight: bold;
+	text-transform: initial;
+}
