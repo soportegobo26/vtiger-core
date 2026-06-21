@@ -40,23 +40,20 @@ RUN docker-php-ext-configure gd --with-freetype --with-jpeg \
 # 3. Composer
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
-# 4. Habilitar módulos Apache requeridos
-RUN a2enmod rewrite headers expires deflate \
-    && printf '<FilesMatch ".+\\.ph(ar|p|tml)$">\n    SetHandler application/x-httpd-php\n</FilesMatch>\n<FilesMatch "^\\.ph(ar|p|tml)$">\n    Require all denied\n</FilesMatch>\n' \
-       > /etc/apache2/mods-available/php.conf \
-    && a2enmod php
+# 4. Habilitar modulos Apache requeridos
+RUN a2enmod rewrite headers expires deflate
 
-# 5. Configuración Apache: AllowOverride All (necesario para .htaccess de vtiger)
+# 5. Configuracion Apache: AllowOverride All (necesario para .htaccess de vtiger)
 COPY ./apache/vtiger.conf /etc/apache2/sites-available/000-default.conf
 RUN a2ensite 000-default
 
-# 6. Configuración PHP optimizada para vtiger
+# 6. Configuracion PHP optimizada para vtiger
 COPY ./config/php.ini /usr/local/etc/php/conf.d/vtiger-config.ini
 
 # 7. Directorio de trabajo
 WORKDIR /var/www/html
 
-# 8. Código fuente CORE de vtiger (SIN MODIFICACIONES)
+# 8. Codigo fuente CORE de vtiger (SIN MODIFICAR)
 COPY ./vtiger-source /var/www/html/
 
 # 9. Instalar dependencias Composer del core
@@ -73,25 +70,14 @@ RUN chown -R www-data:www-data /var/www/html \
                     /var/www/html/logs 2>/dev/null || true
 
 # =============================================================================
-# ONBUILD: se ejecuta automáticamente cuando un repositorio cliente
-# hace FROM ghcr.io/soportegobo26/vtiger-core:latest
+# ONBUILD: se ejecuta automaticamente cuando vtiger-client hace FROM de esta imagen
 # =============================================================================
-# Copia el código personalizado del cliente (módulos, layouts, etc.)
 ONBUILD COPY ./custom-code /var/www/html/
-
-# Copia las migraciones SQL del cliente
 ONBUILD COPY ./migrations  /var/www/html/migrations/
-
-# CORREGIDO: El entrypoint es OPCIONAL — usa || true para que no falle
-# si el cliente no incluye docker-entrypoint.sh
-ONBUILD COPY ./docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
-ONBUILD RUN  chmod +x /usr/local/bin/docker-entrypoint.sh 2>/dev/null || true \
-          && chown -R www-data:www-data /var/www/html \
+ONBUILD RUN  chown -R www-data:www-data /var/www/html \
           && chmod +x /var/www/html/migrations/run-migrations.sh 2>/dev/null || true
 
 EXPOSE 80
 
-# El repositorio cliente DEBE sobreescribir este ENTRYPOINT con su propio
-# docker-entrypoint.sh que genera config.inc.php dinámicamente.
 ENTRYPOINT ["docker-php-entrypoint"]
 CMD ["apache2-foreground"]

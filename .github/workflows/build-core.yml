@@ -72,5 +72,4 @@ jobs:
       - name: Notify build failure
         if: failure()
         run: |
-          echo "ERROR en el build del core"
-          echo "Revisar los logs del step anterior"
+          echo "::error::Error en el build del core. Revisar los logs del step anterior."

@@ -2,22 +2,23 @@
 
 ## Repo purpose
 
-Base Docker image for vtiger CRM 8.4.0 (PHP 8.1+ / Apache). Part of a two-repo system: this repo is the **immutable core**; client repos (e.g. `crm-racksandbags`) extend it via `ONBUILD`.
+Base Docker image for vtiger CRM 8.4.0 (PHP 8.1+ / Apache). Part of a two-repo system: this repo is the **immutable core**; client repos (e.g. `vtiger-client`) extend it via `ONBUILD`.
 
 ## Directories
 
-- `vtiger-source/` — Official vtiger CRM code (unmodified)
-- `config/php.ini` — Optimized PHP config (512M memory, 120s timeout, America/Bogota TZ)
+- `vtiger-source/` — Official vtiger CRM code (unmodified, 56+ modules)
+- `config/php.ini` — Optimized PHP config (512M memory, 600s timeout, America/Bogota TZ)
 - `.github/workflows/build-core.yml` — CI/CD: build & push Docker image to GHCR
 
 ## Key facts
 
 - **Never modify `vtiger-source/` directly** — this is the official vtiger codebase. Changes belong in the client repo's `custom-code/` directory.
-- **Dockerfile** (`Dockerfile`): based on `php:8.1-apache`, installs `mysqli`, `gd`, `imap`, `zip` extensions. Uses `ONBUILD COPY ./custom-code /var/www/html/` + `ONBUILD RUN chown` so client repos auto-inject customizations.
+- **Dockerfile**: based on `php:8.1-apache`, installs `mysqli`, `gd`, `imap`, `zip` extensions. Uses `ONBUILD COPY ./custom-code /var/www/html/` + `ONBUILD RUN chown` so client repos auto-inject customizations.
 - **CI/CD** triggers on pushes to `main`/`master` touching `Dockerfile`, `config/*`, or `vtiger-source/*`. Pushes to `ghcr.io/soportegobo26/vtiger-core:latest`.
 - **PHP entrypoint**: `vtiger-source/index.php` (vtiger CRM application)
-- **Composer**: `vtiger-source/composer.json` requires PHP >=8.1, ext-mysqli, ext-imap, ext-curl, plus smarty, monolog, phpmailer, tcpdf, etc. Run `composer update` if modifying `composer.json`.
-- **Config template**: `vtiger-source/config.template.php` — actual `config.inc.php` is empty (0 bytes); database config is injected at deployment time by the client repo's `docker-entrypoint.sh` from environment variables.
+- **Config template**: `vtiger-source/config.template.php` — contains placeholders (`_DBC_SERVER_`, `_DBC_NAME_`, etc.) that the client repo's entrypoint replaces with real values.
+- **Config**: `vtiger-source/config.inc.php` is intentionally removed from the repo. The client repo's `docker-entrypoint.sh` generates it dynamically from `config.template.php` using environment variables.
+- **Install mode**: When the database has no vtiger tables (fresh install), the entrypoint sets `db_name='_DBC_TYPE_'` in config.inc.php, which triggers `isInstalled()===false` in `WebUI.php` and redirects to the built-in wizard at `index.php?module=Install&view=Index`.
 
 ## Workflows
 

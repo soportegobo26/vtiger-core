@@ -1,0 +1,25 @@
+# vtiger-core/.dockerignore
+
+# Git
+.git
+.gitignore
+.gitattributes
+
+# GitHub
+.github/
+
+# Documentación
+*.md
+LICENSE
+
+# Docker
+Dockerfile
+.dockerignore
+docker-compose*.yml
+
+# Otros
+*.log
+*.tmp
+.env
+.env.*
+!.env.example

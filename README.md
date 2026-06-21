@@ -12,7 +12,7 @@ vtiger-core/
 │   └── vtiger.conf           # VirtualHost con AllowOverride All
 ├── config/
 │   └── php.ini               # PHP optimizado para vtiger
-├── vtiger-source/            # Codigo fuente oficial vtiger 8.4.0 (SIN MODIFICAR)
+├── vtiger-source/            # Codigo oficial vtiger 8.4.0 (SIN MODIFICAR)
 │   └── .htaccess             # Rewrite rules
 └── Dockerfile                # Imagen base con ONBUILD
 ```
@@ -26,9 +26,8 @@ Cada repo cliente hace:
 ```dockerfile
 FROM ghcr.io/soportegobo26/vtiger-core:latest
 # El ONBUILD del core inyecta automaticamente:
-# - custom-code/ -> /var/www/html/
-# - migrations/  -> /var/www/html/migrations/
-# - docker-entrypoint.sh (opcional)
+# - custom-code/ → /var/www/html/
+# - migrations/  → /var/www/html/migrations/
 ```
 
 ## Actualizar el core
@@ -40,4 +39,4 @@ Los repos cliente deben hacer rebuild para heredar los cambios.
 
 - NO modificar `vtiger-source/` sin proceso de release aprobado
 - NO agregar credenciales o `.env` al repo
-- Toda personalizacion por cliente va en su propio repo `crm-cliente-ID`
+- Toda personalizacion por cliente va en su propio repo `vtiger-client`
