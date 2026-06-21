@@ -72,6 +72,10 @@ RUN chown -R www-data:www-data /var/www/html \
 # =============================================================================
 # ONBUILD: se ejecuta automaticamente cuando vtiger-client hace FROM de esta imagen
 # =============================================================================
+# 11. Entrypoint del core
+COPY docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
+RUN chmod +x /usr/local/bin/docker-entrypoint.sh
+
 ONBUILD COPY ./custom-code /var/www/html/
 ONBUILD COPY ./migrations  /var/www/html/migrations/
 ONBUILD RUN  chown -R www-data:www-data /var/www/html \
@@ -79,5 +83,5 @@ ONBUILD RUN  chown -R www-data:www-data /var/www/html \
 
 EXPOSE 80
 
-ENTRYPOINT ["docker-php-entrypoint"]
+ENTRYPOINT ["docker-entrypoint.sh"]
 CMD ["apache2-foreground"]
