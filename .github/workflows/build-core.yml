@@ -8,6 +8,7 @@ on:
       - 'config/**'
       - 'apache/**'
       - 'vtiger-source/**'
+      - '.github/workflows/**'
   workflow_dispatch:
     inputs:
       force_rebuild:
